@@ -1,7 +1,6 @@
 package se.atg.service.harrykart.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,22 +14,15 @@ import se.atg.service.harrykart.service.HarryKartService;
 @RestController
 @RequestMapping("/api")
 public class HarryKartController {
-	
-	@Autowired
-	HarryKartService harryKartService;
+
+    @Autowired
+    HarryKartService harryKartService;
 
     @RequestMapping(method = RequestMethod.POST, path = "/play", consumes = "application/xml", produces = "application/json")
-    public ResponseEntity<HarryKartRaceResult> playHarryKart(@RequestBody HarryKartType harryKartType)throws Exception {
-    		HarryKartRaceResult ranking = getHarryKartRaceResult();
-			ranking.setRanking(harryKartService.processHarryKartRace(harryKartType));
-			
-		return new ResponseEntity<HarryKartRaceResult>(ranking,HttpStatus.OK);
+    public ResponseEntity<HarryKartRaceResult> playHarryKart(
+            @RequestBody HarryKartType harryKartType) throws Exception {
+
+        return harryKartService.harryKartRaceResult(harryKartType);
     }
-    
-    public HarryKartRaceResult getHarryKartRaceResult() {
-    	return new HarryKartRaceResult();
-    }
-    
-    
-    
+
 }

@@ -11,30 +11,33 @@ public class ErrorDetails {
     private String error;
     private HttpStatus status;
     
-    public ErrorDetails(Date timestamp, 
-            String error,HttpStatus status) {
-    	super();
+    /**
+     * Handle the error messages.
+     * @param timestamp
+     * @param error
+     * @param status
+     */
+    public ErrorDetails(Date timestamp, String error, HttpStatus status) {
+        super();
         this.error = error;
-        this.status= status;
-        this.timestamp= timestamp;
+        this.status = status;
+        this.timestamp = timestamp;
     }
-    
-    
-    
+
     public Date getTimestamp() {
         return timestamp;
-      }
+    }
 
-      public String getMessage() {
+    public String getMessage() {
         return message;
-      }
+    }
 
-      public String getErrors() {
+    public String getErrors() {
         return error;
-      }
-      
-      public HttpStatus getStatus() {
-    	  return status;
-      }
+    }
+
+    public HttpStatus getStatus() {
+        return status;
+    }
 
 }
